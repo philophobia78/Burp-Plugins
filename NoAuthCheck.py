@@ -57,7 +57,7 @@ class BurpExtender(IBurpExtender, IScannerCheck):
         results = []
             
         request = self.removeHeader(request, "Cookie")
-        request = self.removeHeader(request, "Authorize")
+        request = self.removeHeader(request, "Authorization")
         
         checkRequestResponse = self._callbacks.makeHttpRequest(baseRequestResponse.getHttpService(), self._helpers.stringToBytes(request))
         code = self._helpers.analyzeResponse(checkRequestResponse.getResponse()).getStatusCode()
